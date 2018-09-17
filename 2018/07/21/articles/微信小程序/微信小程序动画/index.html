@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="depth编程笔记">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://www.udevtech.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>微信小程序动画 | depth编程笔记</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="depth编程笔记" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+
+
+
+
+
+	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=65935173" charset="UTF-8"></script>
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://o7f6a1zrm.bkt.clouddn.com/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Jonyker'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.udevtech.com">depth编程笔记</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/理财/"><i class="fa "></i>理财</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/随笔/"><i class="fa "></i>随笔</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="微信小程序动画">
+            
+	            微信小程序动画
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/微信小程序" title='微信小程序'>
+                        微信小程序
+                    </a>
+                
+                    <a href="/tags/动画" title='动画'>
+                        动画
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/21</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p><strong>插入一个小知识点</strong></p>
+<p>微信小程序中的多个空格怎么打？ &amp;nbsp不行，需要使用一下方式：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">text</span> <span class="attr">decode</span>=<span class="string">"&#123;&#123;true&#125;&#125;"</span> <span class="attr">space</span>=<span class="string">"&#123;&#123;true&#125;&#125;"</span>&gt;</span>&amp;nbsp;&amp;nbsp;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="（一）小程序动画基本api"><a href="#（一）小程序动画基本api" class="headerlink" title="（一）小程序动画基本api"></a>（一）小程序动画基本api</h1><p>微信小程序根据 <code>wx.createAnimation(OBJECT)</code>创建一个animation动画，然后调用该实例创建一个动画，最后通过动画实例的<code>export</code>方法导出动画数据传递给组件的<code>animation</code>属性。 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> animation = wx.createAnimation(&#123;</span><br><span class="line">  transformOrigin: <span class="string">"50% 50%"</span>,</span><br><span class="line">  duration: <span class="number">1000</span>,</span><br><span class="line">  timingFunction: <span class="string">"ease"</span>,</span><br><span class="line">  delay: <span class="number">0</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>OBJECT参数说明：</strong> </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:center">必填</th>
+<th>默认值</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">duration</td>
+<td style="text-align:left">Integer</td>
+<td style="text-align:center">否</td>
+<td>400</td>
+<td style="text-align:left">动画持续时间，单位ms</td>
+</tr>
+<tr>
+<td style="text-align:left">timingFunction</td>
+<td style="text-align:left">String</td>
+<td style="text-align:center">否</td>
+<td>linear</td>
+<td style="text-align:left">定义动画的效果</td>
+</tr>
+<tr>
+<td style="text-align:left">delay</td>
+<td style="text-align:left">Integer</td>
+<td style="text-align:center">否</td>
+<td>0</td>
+<td style="text-align:left">动画延迟时间，单位 ms</td>
+</tr>
+<tr>
+<td style="text-align:left">transformOrigin</td>
+<td style="text-align:left">String</td>
+<td style="text-align:center">否</td>
+<td>“50% 50% 0”</td>
+<td style="text-align:left">设置transform-origin</td>
+</tr>
+</tbody>
+</table>
+<p>看一个效果：</p>
+<p><img src="/2018/07/21/articles/微信小程序/微信小程序动画/20180721_233016.gif" alt=""></p>
+<p>实现代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">createAnimation:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">   <span class="keyword">var</span> animation = wx.createAnimation(&#123;</span><br><span class="line">     transformOrigin: <span class="string">"50% 50%"</span>,</span><br><span class="line">     duration: <span class="number">5000</span>,</span><br><span class="line">     timingFunction: <span class="string">"ease"</span>,</span><br><span class="line">     delay: <span class="number">1000</span></span><br><span class="line">   &#125;)</span><br><span class="line">   <span class="keyword">this</span>.animation = animation</span><br><span class="line">   setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     animation.scale(<span class="number">3</span>, <span class="number">3</span>).rotate(<span class="number">90</span>).step()</span><br><span class="line">     <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">       animationData: animation.export()</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;.bind(<span class="keyword">this</span>), <span class="number">500</span>)</span><br><span class="line">   setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     animation.scale(<span class="number">1</span>, <span class="number">1</span>).rotate(<span class="number">-90</span>).step()</span><br><span class="line">     <span class="keyword">this</span>.setData(&#123;</span><br><span class="line">       animationData: animation.export()</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;.bind(<span class="keyword">this</span>), <span class="number">5000</span>)</span><br><span class="line"></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<p>作者：吴开杰</p>
+<p>联系QQ：534098845</p>
+<p><br></p>
+<p><br></p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处。
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/07/25/articles/理财/基础知识/A股手续费具体算法/" class="pre-post btn btn-default" title='A股手续费具体算法'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">A股手续费具体算法</span>
+        </a>
+    
+    
+        <a href="/2018/07/18/articles/Command/命令行的基本格式/" class="next-post btn btn-default" title='命令行的基本格式'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">命令行的基本格式</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xEVsKKOGYzl08U4bQvi5dzLT-gzGzoHsz',
+            appKey: 'QIGaRLo2U3rG8fONCUUCmYil',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（一）小程序动画基本api"><span class="toc-text">（一）小程序动画基本api</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Blogger is <a href="//github.com/Jiitech" class="copyright-links" target="_blank" rel="nofollow">Jonyker </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

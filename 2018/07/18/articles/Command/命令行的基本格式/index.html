@@ -1,0 +1,312 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="depth编程笔记">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://www.udevtech.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>命令行的基本格式 | depth编程笔记</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="depth编程笔记" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+
+
+
+
+
+	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=65935173" charset="UTF-8"></script>
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://o7f6a1zrm.bkt.clouddn.com/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Jonyker'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.udevtech.com">depth编程笔记</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/理财/"><i class="fa "></i>理财</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/随笔/"><i class="fa "></i>随笔</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="命令行的基本格式">
+            
+	            命令行的基本格式
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/后端">
+            后端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Command" title='Command'>
+                        Command
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/18</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <ul>
+<li>[]：内的内容意思是：可写可不写<ul>
+<li>例如：/home下就一个list 文件，使用ls –help中的 Usage: ls [OPTION]… [FILE]…</li>
+</ul>
+</li>
+<li>{}：那就必须要在{}内给出的选择里选一个</li>
+<li>&lt;&gt;：表示必选</li>
+</ul>
+<p>命令行语法字符在命令行语法中，某些字符与格式有着特殊的意义与含义。本文档中的命令行语法使用以下字符格式：</p>
+<h2 id="1-方括号"><a href="#1-方括号" class="headerlink" title="1.方括号"></a>1.方括号</h2><p>方括号 ( [ ] ) 表示里面的元素（参数、值或信息）是<em>可选的</em>。 您可以选择一个或多个条目，也可以不选。 不要将方括号本身也输入到命令行中。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[global options]、</span><br><span class="line">[<span class="built_in">source</span> arguments]、</span><br><span class="line">[destination arguments]</span><br></pre></td></tr></table></figure>
+<h2 id="2-尖括号"><a href="#2-尖括号" class="headerlink" title="2.尖括号"></a>2.尖括号</h2><p>尖括号 ( &lt; &gt; ) 表示里面的元素(参数、值或信息）是<em>必需的</em>。 您需要用相应的信息来替换尖括号里面的文本。 不要将尖括号本身也输入到命令行中。 </p>
+<p><strong>示例：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-f &lt;*file nam*e&gt;、</span><br><span class="line">-printer &lt;*printer name*&gt;、</span><br><span class="line">-repeat &lt;months&gt; &lt;days&gt; &lt;hours&gt; &lt;minutes&gt;、</span><br><span class="line">-date access &lt;mm/dd/yyyy&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-斜体"><a href="#3-斜体" class="headerlink" title="3.斜体"></a>3.斜体</h2><p>斜体文本表示您必须通过相应的值提供的信息。 它是一个要用值来替换的选项或参数。</p>
+<p><strong>示例：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-sessionpassword *session password*、</span><br><span class="line">-f &lt;*file nam*e&gt;、</span><br><span class="line">-printer &lt;*printer name*&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-管道"><a href="#4-管道" class="headerlink" title="4.管道"></a>4.管道</h2><p>管道符号（竖线）含义是“或者”，它表示在一个元素内的一个选项。 如果两个参数由管道符号分隔开，您可以选择分隔符左边的元素，也可选择分隔符右边的元素。 在一次命令使用中不可同时选择两个元素。 在方括号中，这些选项是可选的。 在尖括号中，至少需要一个选项。</p>
+<p><strong>示例：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-ca_backup [-custom|-rotation|-gfsrotation]、</span><br><span class="line">-excludeday &lt;Sun|Mon|Tue|Wed|Thu|Fri|Sat&gt;、</span><br><span class="line">-runjob &lt;start|stop&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-省略号"><a href="#5-省略号" class="headerlink" title="5. 省略号"></a>5. 省略号</h2><p>由三个句点 ( … ) 组成的省略号含义是“等等”，表示前述元素（参数、值或信息）可以在命令行中多次重复。</p>
+<p><strong>示例：</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-jobid &lt;job id1, job id2, job id3,...&gt;、</span><br><span class="line">[-exitcode &lt;<span class="built_in">exit</span> code 1&gt;、&lt;<span class="built_in">exit</span> code2&gt;、&lt;<span class="built_in">exit</span> code3&gt; ...]</span><br></pre></td></tr></table></figure></p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处。
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/07/21/articles/微信小程序/微信小程序动画/" class="pre-post btn btn-default" title='微信小程序动画'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">微信小程序动画</span>
+        </a>
+    
+    
+        <a href="/2018/07/17/articles/Hexo/Hexo搭建个人博客步骤/" class="next-post btn btn-default" title='Hexo搭建个人博客步骤~'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Hexo搭建个人博客步骤~</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xEVsKKOGYzl08U4bQvi5dzLT-gzGzoHsz',
+            appKey: 'QIGaRLo2U3rG8fONCUUCmYil',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-方括号"><span class="toc-text">1.方括号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-尖括号"><span class="toc-text">2.尖括号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-斜体"><span class="toc-text">3.斜体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-管道"><span class="toc-text">4.管道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-省略号"><span class="toc-text">5. 省略号</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Blogger is <a href="//github.com/Jiitech" class="copyright-links" target="_blank" rel="nofollow">Jonyker </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="depth编程笔记">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://www.udevtech.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>（一）MACD算法详细 | depth编程笔记</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="depth编程笔记" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+
+
+
+
+
+	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=65935173" charset="UTF-8"></script>
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://o7f6a1zrm.bkt.clouddn.com/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Jonyker'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.udevtech.com">depth编程笔记</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/理财/"><i class="fa "></i>理财</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/随笔/"><i class="fa "></i>随笔</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="（一）MACD算法详细">
+            
+	            （一）MACD算法详细
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/理财">
+            理财
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/MACD" title='MACD'>
+                        MACD
+                    </a>
+                
+                    <a href="/tags/指标" title='指标'>
+                        指标
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/26</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>&nbsp; &nbsp; &nbsp;&nbsp;MACD指标又叫指数平滑异同移动平均线，是由查拉尔·阿佩尔(Gerald Apple)所创造的,是一种研判股票买卖时机、跟踪股价运行趋势的技术分析工具。 </p>
+<p><br></p>
+<h1 id="第一节-MACD指标的原理和计算方法"><a href="#第一节-MACD指标的原理和计算方法" class="headerlink" title="第一节-MACD指标的原理和计算方法"></a>第一节-MACD指标的原理和计算方法</h1><h2 id="一、MACD指标的原理"><a href="#一、MACD指标的原理" class="headerlink" title="一、MACD指标的原理"></a>一、MACD指标的原理</h2><p>&nbsp; &nbsp; &nbsp;&nbsp;MACD指标是根据均线的构造原理，对股票价格的收盘价进行平滑处理，求出算术平均值以后再进行计算，是一种趋向类指标。</p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;MACD指标是运用快速(短期)和慢速(长期)移动平均线及其聚合与分离的征兆，加以双重平滑运算。而根据移动平均线原理发展出来的MACD，一则去除了移动平均线频繁发出假信号的缺陷，二则保留了移动平均线的效果，因此，MACD指标具有均线趋势性、稳重性、安定性等特点，是用来研判买卖股票的时机，预测股票价格涨跌的技术分析指标 。</p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;MACD指标主要是通过EMA、DIF和DEA(或叫MACD、DEM)这三值之间关系的研判，DIF和DEA连接起来的移动平均线的研判以及DIF减去DEM值而绘制成的柱状图(BAR)的研判等来分析判断行情，预测股价中短期趋势的主要的股市技术分析指标。其中，DIF是核心，DEA是辅助。DIF是快速平滑移动平均线(EMA1)和慢速平滑移动平均线(EMA2)的差。BAR柱状图在股市技术软件上是用红柱和绿柱的收缩来研判行情。</p>
+<p><br></p>
+<h2 id="二、EMA、DIF、DEA-的含义"><a href="#二、EMA、DIF、DEA-的含义" class="headerlink" title="二、EMA、DIF、DEA 的含义"></a>二、EMA、DIF、DEA 的含义</h2><h3 id="1-MA-移动平均线"><a href="#1-MA-移动平均线" class="headerlink" title="1.MA-移动平均线"></a>1.MA-移动平均线</h3><p>&nbsp; &nbsp; &nbsp;&nbsp;股票K线中的均线是移动平均线，Moving Average，简称<strong>MA</strong>，原本的意思是移动平均，由于我们将其制作成线形，所以一般称之为移动平均线，简称<strong>均线</strong>。</p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;<strong>它是将某一段时间的收盘价之和除以该周期。</strong></p>
+<p>公式： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">【MA】：求简单移动平均</span><br><span class="line">用法：MA(X,N),求X的N日移动平均值。</span><br><span class="line">算法：(X1+X2+X3+...+Xn)/N</span><br><span class="line">例如：MA(CLOSE,10) 表示求10日均价。特例：MA(X,0)表示X所有数据的平均。</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">以300286安科瑞为例：</span><br><span class="line">其前五天收盘价如下</span><br><span class="line">第一天收盘价：C1=35.12;</span><br><span class="line">第二天收盘价：C2=31.61;</span><br><span class="line">第三天收盘价：C3=34.10;</span><br><span class="line">第四天收盘价：C4=31.12;</span><br><span class="line">第五天收盘价：C5=32.16;</span><br><span class="line"></span><br><span class="line">MA(C,5)</span><br><span class="line">第一天数值：M1=无数据</span><br><span class="line">第二天数值：M2=无数据</span><br><span class="line">第三天数值：M3=无数据</span><br><span class="line">第四天数值：M4=无数据</span><br><span class="line">第五天数值：M5=(C1+C2+C3+C4+C5)/N=(35.12+31.61+34.10+31.12+32.16)÷5=32.822</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="2-EMA-指数移动平滑平均线"><a href="#2-EMA-指数移动平滑平均线" class="headerlink" title="2.EMA-指数移动平滑平均线"></a>2.EMA-指数移动平滑平均线</h3><p>&nbsp; &nbsp; &nbsp;&nbsp;<strong>EMA</strong> （Exponential Moving Average）是指数平均数指标。也叫<code>EXPMA</code>指标，它也是一种趋向类指标，指数平均数指标是以<strong>指数式递减加权</strong>的<strong>移动平均</strong>。 </p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;<strong>当日指数平均值=平滑系数*（当日指数值-昨日指数平均值）+昨日指数平均值；</strong> </p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;<strong>平滑系数=2/(周期单位+ 1)</strong></p>
+<p>由以上指标推导开，得到： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EMA(C,N)=2C/(N+1)+(N-1)/(N+1)*昨天的指数收盘平均值；</span><br></pre></td></tr></table></figure>
+<p>公式： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">【EMA】：求指数平滑移动平均</span><br><span class="line">用法：EMA(X,N),求X的N日指数平滑移动平均。</span><br><span class="line">算法：若Y=EMA(X,N)，则Y=[2*X+(N-1)*Y<span class="string">']/(N+1),其中Y'</span>表示上一周期Y值。</span><br><span class="line">例如：EMA(CLOSE,30) 表示求30日指数平滑均价。</span><br></pre></td></tr></table></figure>
+<p>例子：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">以300286安科瑞为例：</span><br><span class="line">其前五天收盘价如下</span><br><span class="line">第一天收盘价：C1=35.12;</span><br><span class="line">第二天收盘价：C2=31.61;</span><br><span class="line">第三天收盘价：C3=34.10;</span><br><span class="line">第四天收盘价：C4=31.12;</span><br><span class="line">第五天收盘价：C5=32.16;</span><br><span class="line"></span><br><span class="line">EMA(C,5)</span><br><span class="line">第一天数值：E1=C1=35.120;</span><br><span class="line">第二天数值：E2=[2*C2+(N-1)*E1]/(N+1)=(2×31.61+4×35.120)÷6=33.950</span><br><span class="line">第三天数值：E3=[2*C3+(N-1)*E2]/(N+1)=(2×34.10+4×33.950)÷6=34.000</span><br><span class="line">第四天数值：E4=[2*C4+(N-1)*E3]/(N+1)=(2×31.12+4×34.000)÷6=33.040</span><br><span class="line">第五天数值：E5=[2*C5+(N-1)*E4]/(N+1)=(2×32.16+4×33.040)÷6=32.747</span><br></pre></td></tr></table></figure>
+<p>它在计算平均值时，考虑了前一日的平均值，平滑系数是定的，它是利用今日的值与前一日的平均值的差，再考虑平滑系数，计算出来的平均值，所以也有叫异同平均的。 </p>
+<p>因此，MA和EMA算法是不同的，主要是对数组中的数据的权重侧重不同。 </p>
+<p>简单的说，当要比较数值与均价的关系时，用MA就可以了，而要比较均价的趋势快慢时，用EMA更稳定；有时，在均价值不重要时，也用EMA来平滑和美观曲线。 </p>
+<p><br></p>
+<h3 id="3-DIF-离差值"><a href="#3-DIF-离差值" class="headerlink" title="3.DIF-离差值"></a>3.DIF-离差值</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DIF=前12日价格平均值-前26日价格平均值。</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="三、MACD指标的计算方法"><a href="#三、MACD指标的计算方法" class="headerlink" title="三、MACD指标的计算方法"></a>三、MACD指标的计算方法</h2><p>&nbsp; &nbsp; &nbsp;&nbsp;MACD在应用上，首先计算出快速移动平均线(即EMA1)和慢速移动平均线(即EMA2)，以此两个数值，来作为测量两者(快慢速线)间的离差值(DIF)的依据，然后再求DIF的N周期的平滑移动平均线DEA(也叫MACD、DEM)线。 </p>
+<p><strong>以EMA1的参数为12日，EMA2的参数为26日，DIF的参数为9日为例来看看MACD的计算过程</strong></p>
+<h3 id="1-计算过程"><a href="#1-计算过程" class="headerlink" title="1.计算过程"></a>1.计算过程</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通用公式：EMA = 2C / (N + 1) + (N - 1) / (N + 1) * 昨天的指数收盘平均值；</span></span><br><span class="line"><span class="comment"># EMA（12）= 前一日EMA（12）×11 / 13＋今日收盘价×2 / 13</span></span><br><span class="line"><span class="comment"># EMA（26）= 前一日EMA（26）×25 / 27＋今日收盘价×2 / 27</span></span><br><span class="line"><span class="comment"># DIFF = 今日EMA（12）- 今日EMA（26）</span></span><br><span class="line"><span class="comment"># DEA（MACD）= 前一日DEA×8 / 10＋今日DIF×2 / 10</span></span><br><span class="line"><span class="comment"># BAR = 2×(DIFF－DEA)</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-小米HK1810当日收盘数据"><a href="#2-小米HK1810当日收盘数据" class="headerlink" title="2.小米HK1810当日收盘数据"></a>2.小米HK1810当日收盘数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> <span class="string">'-------计算小米股票的MACD指标'</span></span><br><span class="line"><span class="comment"># 避免使用int类型，建议使用float，否则在计算的时候会出现错误。</span></span><br><span class="line">C1 = <span class="number">16.8</span>   <span class="comment"># 第1天收盘价</span></span><br><span class="line">C2 = <span class="number">19.0</span>   <span class="comment"># 第2天收盘价</span></span><br><span class="line">C3 = <span class="number">19.0</span>   <span class="comment"># 第3天收盘价</span></span><br><span class="line">C4 = <span class="number">19.26</span>  <span class="comment"># 第4天收盘价</span></span><br><span class="line">C5 = <span class="number">21.45</span>  <span class="comment"># 第5天收盘价</span></span><br><span class="line">C6 = <span class="number">21.05</span>  <span class="comment"># 第6天收盘价</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'收盘价数据类型：'</span>,type(C1)</span><br></pre></td></tr></table></figure>
+<h3 id="3-计算移动平均值-EMA"><a href="#3-计算移动平均值-EMA" class="headerlink" title="3.计算移动平均值(EMA)"></a>3.计算移动平均值(EMA)</h3><p><strong>12日EMA的算式为</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">12.0</span> <span class="comment">#为了避免计算数据丢失，使用float类型</span></span><br><span class="line">coeff = <span class="number">2.0</span> / (N + <span class="number">1</span>)  <span class="comment"># 平滑系数 = 2.0/(周期+1)</span></span><br><span class="line">ES1 = C1</span><br><span class="line">ES2 = ES1 * (<span class="number">1</span>-coeff) + C2 * coeff</span><br><span class="line">ES3 = ES2 * (<span class="number">1</span> - coeff) + C3 * coeff</span><br><span class="line">ES4 = ES3 * (<span class="number">1</span> - coeff) + C4 * coeff</span><br><span class="line">ES5 = ES4 * (<span class="number">1</span> - coeff) + C5 * coeff</span><br><span class="line">ES6 = ES5 * (<span class="number">1</span> - coeff) + C6 * coeff</span><br><span class="line"><span class="keyword">print</span> <span class="string">'---------------------------------MACD-ema(12)值----------'</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.09:ES1-&gt;'</span>, ES1</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.10:ES2-&gt;'</span>, ES2</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.11:ES3-&gt;'</span>, ES3</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.12:ES4-&gt;'</span>, ES4</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.13:ES5-&gt;'</span>, ES5</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.16:ES6-&gt;'</span>, ES6</span><br><span class="line"><span class="comment"># 通用公式：</span></span><br><span class="line">ES6 = <span class="number">2</span> * C6 / (N + <span class="number">1</span>) + (N - <span class="number">1</span>) / (N + <span class="number">1</span>) * ES5</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.16 Ema12（通用公式）：'</span>, ES6</span><br></pre></td></tr></table></figure></p>
+<p><strong>26日EMA的算式为 </strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">N = <span class="number">26</span></span><br><span class="line">EL1 = C1</span><br><span class="line">EL2 = (<span class="number">2</span> * C2 + (N - <span class="number">1</span>) * EL1) / (N + <span class="number">1</span>)</span><br><span class="line">EL3 = (<span class="number">2</span> * C3 + (N - <span class="number">1</span>) * EL2) / (N + <span class="number">1</span>)</span><br><span class="line">EL4 = (<span class="number">2</span> * C4 + (N - <span class="number">1</span>) * EL3) / (N + <span class="number">1</span>)</span><br><span class="line">EL5 = (<span class="number">2</span> * C5 + (N - <span class="number">1</span>) * EL4) / (N + <span class="number">1</span>)</span><br><span class="line">EL6 = (<span class="number">2</span> * C6 + (N - <span class="number">1</span>) * EL5) / (N + <span class="number">1</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'---------------------------------MACD-ema(26)值----------'</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.09:EL1-&gt;'</span>, EL1</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.10:EL2-&gt;'</span>, EL2</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.11:EL3-&gt;'</span>, EL3</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.12:EL4-&gt;'</span>, EL4</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.13:EL5-&gt;'</span>, EL5</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.16:EL6-&gt;'</span>, EL6</span><br></pre></td></tr></table></figure></p>
+<p><br></p>
+<h3 id="4-计算离差值-DIF"><a href="#4-计算离差值-DIF" class="headerlink" title="4.计算离差值(DIF)"></a>4.计算离差值(DIF)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DIF=今日EMA(<span class="number">12</span>)－今日EMA(<span class="number">26</span>)</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="5-计算DIF的9日EMA"><a href="#5-计算DIF的9日EMA" class="headerlink" title="5.计算DIF的9日EMA"></a>5.计算DIF的9日EMA</h3><p>根据离差值计算其9日的EMA，即离差平均值，是所求的MACD值。为了不与指标原名相混淆，此值又名DEA或DEM。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DIFF=今日EMA（12）- 今日EMA（26）</span></span><br><span class="line">DIFF1 = ES1 - EL1</span><br><span class="line">DIFF2 = ES2 - EL2</span><br><span class="line">DIFF3 = ES3 - EL3</span><br><span class="line">DIFF4 = ES4 - EL4</span><br><span class="line">DIFF5 = ES5 - EL5</span><br><span class="line">DIFF6 = ES6 - EL6</span><br><span class="line"><span class="keyword">print</span> <span class="string">'---------------------------------MACD-dif值----------'</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.09----DIFF1 ：'</span>, DIFF1</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.10----DIFF2 ：'</span>, DIFF2</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.11----DIFF3 ：'</span>, DIFF3</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.12----DIFF4 ：'</span>, DIFF4</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.13----DIFF5 ：'</span>, DIFF5</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.16----DIFF6 ：'</span>, DIFF6</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="6-计算DEA-MACD"><a href="#6-计算DEA-MACD" class="headerlink" title="6.计算DEA(MACD)"></a>6.计算DEA(MACD)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 平滑系数：coeff = 2.0 /（N+1）</span></span><br><span class="line"><span class="comment"># DEA（MACD）= 前一日DEA×(1-coeff)＋今日DIF×coeff</span></span><br><span class="line"><span class="comment"># DEA（MACD）= 前一日DEA×8/10＋今日DIF×2/10</span></span><br><span class="line"><span class="comment"># 开盘第一天DEA（MACD）= 0.000</span></span><br><span class="line">N = <span class="number">9</span></span><br><span class="line">coeff = <span class="number">2.0</span> / (N + <span class="number">1</span>)</span><br><span class="line">DEA1 = <span class="number">0.000</span></span><br><span class="line">DEA2 = DEA1 * (<span class="number">1</span> - coeff) + DIFF2 * coeff</span><br><span class="line">DEA3 = DEA2 * (<span class="number">1</span> - coeff) + DIFF3 * coeff</span><br><span class="line">DEA4 = DEA3 * (<span class="number">1</span> - coeff) + DIFF4 * coeff</span><br><span class="line">DEA5 = DEA4 * (<span class="number">1</span> - coeff) + DIFF5 * coeff</span><br><span class="line">DEA6 = DEA5 * (<span class="number">1</span> - coeff) + DIFF6 * coeff</span><br><span class="line"><span class="keyword">print</span> <span class="string">'---------------------------------MACD-dma值----------'</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.09----DEA1 ：'</span>, DEA1</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.10----DEA2 ：'</span>, DEA2</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.11----DEA3 ：'</span>, DEA3</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.12----DEA4 ：'</span>, DEA4</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.13----DEA5 ：'</span>, DEA5</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.16----DEA6 ：'</span>, DEA6</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h3 id="7-计算BAR柱状图"><a href="#7-计算BAR柱状图" class="headerlink" title="7.计算BAR柱状图"></a>7.计算BAR柱状图</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 算法：BAR = 2×(DIFF－DEA)</span></span><br><span class="line">BAR1 = <span class="number">2</span> * (DIFF1 - DEA1)</span><br><span class="line">BAR2 = <span class="number">2</span> * (DIFF2 - DEA2)</span><br><span class="line">BAR3 = <span class="number">2</span> * (DIFF3 - DEA3)</span><br><span class="line">BAR4 = <span class="number">2</span> * (DIFF4 - DEA4)</span><br><span class="line">BAR5 = <span class="number">2</span> * (DIFF5 - DEA5)</span><br><span class="line">BAR6 = <span class="number">2</span> * (DIFF6 - DEA6)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'---------------------------------MACD-bar值----------'</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.09----BAR1 ：'</span>, BAR1</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.10----BAR2 ：'</span>, BAR2</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.11----BAR3 ：'</span>, BAR3</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.12----BAR4 ：'</span>, BAR4</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.13----BAR5 ：'</span>, BAR5</span><br><span class="line"><span class="keyword">print</span> <span class="string">'-------2018.07.16----BAR6 ：'</span>, BAR6</span><br></pre></td></tr></table></figure>
+<h3 id="8-最后计算结果"><a href="#8-最后计算结果" class="headerlink" title="8.最后计算结果"></a>8.最后计算结果</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">-------计算小米股票的MACD指标</span><br><span class="line">收盘价数据类型： &lt;type <span class="string">'float'</span>&gt;</span><br><span class="line">---------------------------------MACD-ema(<span class="number">12</span>)值----------</span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.09</span>:ES1-- <span class="number">16.8</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.10</span>:ES2-- <span class="number">17.1384615385</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.11</span>:ES3-- <span class="number">17.424852071</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.12</span>:ES4-- <span class="number">17.7071825216</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.13</span>:ES5-- <span class="number">18.2830005952</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.16</span>:ES6-- <span class="number">18.7086928113</span></span><br><span class="line">---------------------------------MACD-ema(<span class="number">26</span>)值----------</span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.09</span>:EL1-- <span class="number">16.8</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.10</span>:EL2-- <span class="number">16.962962963</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.11</span>:EL3-- <span class="number">17.1138545953</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.12</span>:EL4-- <span class="number">17.272828329</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.13</span>:EL5-- <span class="number">17.5822484528</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.16</span>:EL6-- <span class="number">17.8391189378</span></span><br><span class="line">---------------------------------MACD-ema(<span class="number">12</span>)值----------</span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.09</span>:ES1-- <span class="number">16.8</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.10</span>:ES2-- <span class="number">17.1384615385</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.11</span>:ES3-- <span class="number">17.424852071</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.12</span>:ES4-- <span class="number">17.7071825216</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.13</span>:ES5-- <span class="number">18.2830005952</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.16</span>:ES6-- <span class="number">18.7086928113</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.16</span> Ema12（通用公式）： <span class="number">18.7086928113</span></span><br><span class="line">---------------------------------MACD-dif值----------</span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.09</span>----DIFF1 ： <span class="number">0.0</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.10</span>----DIFF2 ： <span class="number">0.175498575499</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.11</span>----DIFF3 ： <span class="number">0.31099747567</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.12</span>----DIFF4 ： <span class="number">0.434354192606</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.13</span>----DIFF5 ： <span class="number">0.700752142426</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.16</span>----DIFF6 ： <span class="number">0.869573873568</span></span><br><span class="line">---------------------------------MACD-dma值----------</span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.09</span>----DEA1 ： <span class="number">0.0</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.10</span>----DEA2 ： <span class="number">0.0350997150997</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.11</span>----DEA3 ： <span class="number">0.0902792672137</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.12</span>----DEA4 ： <span class="number">0.159094252292</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.13</span>----DEA5 ： <span class="number">0.267425830319</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.16</span>----DEA6 ： <span class="number">0.387855438969</span></span><br><span class="line">---------------------------------MACD-bar值----------</span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.09</span>----BAR1 ： <span class="number">0.0</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.10</span>----BAR2 ： <span class="number">0.280797720798</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.11</span>----BAR3 ： <span class="number">0.441436416912</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.12</span>----BAR4 ： <span class="number">0.550519880627</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.13</span>----BAR5 ： <span class="number">0.866652624214</span></span><br><span class="line">------<span class="number">-2018.07</span><span class="number">.16</span>----BAR6 ： <span class="number">0.963436869198</span></span><br><span class="line"></span><br><span class="line">Process finished <span class="keyword">with</span> exit code <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p><img src="/2018/07/26/articles/理财/MACD指标/一MACD算法详细/1532780992.jpg" alt="1"></p>
+<p><strong>以上计算结果和同花顺基本一致。</strong></p>
+<p><strong>计算出的DIF和DEA的数值均为正值或负值。</strong> </p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;理论上，在持续的涨势中，12日EMA线在26日 EMA线之上，其间的正离差值(+DIF)会越来越大；反之，在跌势中离差值可能变为负数(-DIF)，也会越来越大，而在行情开始好转时，正负离差值将会缩小。指标MACD正是利用正负的离差值(±DIF)与离差值的N日平均线(N日EMA)的交叉信号作为买卖信号的依据，即再度以快慢速移动线的交叉原理来分析买卖信号。另外，MACD指标在股市软件上还有个辅助指标–BAR柱状线，其公式为：BAR=2×(DIF－DEA)，我们还是可以利用BAR柱状线的收缩来决定买卖时机。</p>
+<p>&nbsp; &nbsp; &nbsp;&nbsp;离差值DIF和离差平均值DEA是研判MACD的主要工具。其计算方法比较烦琐，由于目前这些计算值都会在股市分析软件上由计算机自动完成，因此，投资者只要了解其运算过程即可，而更重要的是掌握它的研判功能。另外，和其他指标的计算一样，由于选用的计算周期的不同，MACD指标也包括日MACD指标、周MACD指标、月MACD指标年MACD指标以及分钟MACD指标等各种类型。经常被用于股市研判的是日MACD指标和周MACD指标。虽然它们的计算时的取值有所不同，但基本的计算方法一样。</p>
+<p>在实践中，将各点的 DIF和DEA(MACD)连接起来就会形成在零轴上下移动的两条快速(短期)和慢速(长期)线。</p>
+<p><br></p>
+<p>作者：吴开杰</p>
+<p>联系QQ：534098845</p>
+<p>文章代码：<a href="https://gitee.com/jerry_os/PythonBasicLearns" target="_blank" rel="noopener">https://gitee.com/jerry_os/PythonBasicLearns</a></p>
+<p><br></p>
+<p><br></p>
+<p>参考文章：</p>
+<p><a href="http://www.360doc.com/content/18/0105/07/116554_719181449.shtml" target="_blank" rel="noopener">http://www.360doc.com/content/18/0105/07/116554_719181449.shtml</a></p>
+<p><a href="http://blog.sina.com.cn/s/blog_7365147901017284.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_7365147901017284.html</a></p>
+<p><br></p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处。
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/07/26/articles/理财/MACD指标/二MACD指标使用详解/" class="pre-post btn btn-default" title='（二）MACD指标使用详解（上）'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">（二）MACD指标使用详解（上）</span>
+        </a>
+    
+    
+        <a href="/2018/07/25/articles/理财/基础知识/A股手续费具体算法/" class="next-post btn btn-default" title='A股手续费具体算法'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">A股手续费具体算法</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xEVsKKOGYzl08U4bQvi5dzLT-gzGzoHsz',
+            appKey: 'QIGaRLo2U3rG8fONCUUCmYil',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第一节-MACD指标的原理和计算方法"><span class="toc-text">第一节-MACD指标的原理和计算方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、MACD指标的原理"><span class="toc-text">一、MACD指标的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、EMA、DIF、DEA-的含义"><span class="toc-text">二、EMA、DIF、DEA 的含义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-MA-移动平均线"><span class="toc-text">1.MA-移动平均线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-EMA-指数移动平滑平均线"><span class="toc-text">2.EMA-指数移动平滑平均线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-DIF-离差值"><span class="toc-text">3.DIF-离差值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、MACD指标的计算方法"><span class="toc-text">三、MACD指标的计算方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-计算过程"><span class="toc-text">1.计算过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-小米HK1810当日收盘数据"><span class="toc-text">2.小米HK1810当日收盘数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-计算移动平均值-EMA"><span class="toc-text">3.计算移动平均值(EMA)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-计算离差值-DIF"><span class="toc-text">4.计算离差值(DIF)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-计算DIF的9日EMA"><span class="toc-text">5.计算DIF的9日EMA</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-计算DEA-MACD"><span class="toc-text">6.计算DEA(MACD)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-计算BAR柱状图"><span class="toc-text">7.计算BAR柱状图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-最后计算结果"><span class="toc-text">8.最后计算结果</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Blogger is <a href="//github.com/Jiitech" class="copyright-links" target="_blank" rel="nofollow">Jonyker </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

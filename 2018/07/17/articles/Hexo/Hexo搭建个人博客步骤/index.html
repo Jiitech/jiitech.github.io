@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="depth编程笔记">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://www.udevtech.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>Hexo搭建个人博客步骤~ | depth编程笔记</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="depth编程笔记" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+
+
+
+
+
+	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=65935173" charset="UTF-8"></script>
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://o7f6a1zrm.bkt.clouddn.com/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Jonyker'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.udevtech.com">depth编程笔记</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/理财/"><i class="fa "></i>理财</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/随笔/"><i class="fa "></i>随笔</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Hexo搭建个人博客步骤~">
+            
+	            Hexo搭建个人博客步骤~
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/前端">
+            前端
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/HEXO" title='HEXO'>
+                        HEXO
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/17</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <p>在2016年的时候就搭建过hexo博客，因为种种原因就放置在哪里没管了，现在重新整理一下关于hexo搭建博客的过程。<br><br></p>
+<p>在这里说一下，搭建博客并不是我们的目的，我们的真正目的，是通过搭建博客，把自己工作中技术，或者生活的心情纪录下来，而不是博客本身。<br><br></p>
+<h1 id="Hexo搭建个人博客步骤"><a href="#Hexo搭建个人博客步骤" class="headerlink" title="Hexo搭建个人博客步骤~"></a>Hexo搭建个人博客步骤~</h1><h2 id="（一）安装配置Git"><a href="#（一）安装配置Git" class="headerlink" title="（一）安装配置Git"></a>（一）安装配置Git</h2><h3 id="1-1安装Git"><a href="#1-1安装Git" class="headerlink" title="1.1安装Git"></a>1.1安装Git</h3><blockquote>
+<p>下载地址：<a href="https://git-for-windows.github.io/" target="_blank" rel="noopener">https://git-for-windows.github.io/</a> </p>
+</blockquote>
+<p>我的是windows，下载Git-2.18.0-64-bit.exe，下一步，下一步，安装即可。</p>
+<blockquote>
+<p>注意，需要在这一步，将git的安装路径添加到环境路径里面，Adjusting your PATH environment </p>
+</blockquote>
+<h3 id="1-2配置Git"><a href="#1-2配置Git" class="headerlink" title="1.2配置Git"></a>1.2配置Git</h3><h4 id="第1步：创建SSH-Key"><a href="#第1步：创建SSH-Key" class="headerlink" title="第1步：创建SSH Key"></a>第1步：创建SSH Key</h4><p>在windows下查看[c盘-&gt;用户-&gt;自己的用户名-&gt;.ssh]下是否有id_rsa、id_rsa.pub文件，如果没有需要手动生成，打开git bash，在控制台中输入以下命令。 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"jonyker@163.com"</span></span><br></pre></td></tr></table></figure>
+<p>可能会出现下面的错误：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Bad escape character <span class="string">'ygen'</span>.</span><br></pre></td></tr></table></figure>
+<p><em>解决办法：</em></p>
+<ol>
+<li>ssh -keygen之间出现了空格，正确命令是没有空格的。 </li>
+</ol>
+<p>执行成功以后，会出现如下结果（中间可能出现交互，回车就好）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C <span class="string">"jonyker@163.com"</span></span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/c/Users/Administrator/.ssh/id_rsa):</span><br><span class="line">Created directory <span class="string">'/c/Users/Administrator/.ssh'</span>.</span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line">Enter same passphrase again:</span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/Administrator/.ssh/id_rsa.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/Administrator/.ssh/id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">SHA256:C010/Z8MoHOLtchblyLjsmhroCe7Ci2K8rzlnGbnEZM jonyker@163.com</span><br><span class="line">The key<span class="string">'s randomart image is:</span></span><br><span class="line"><span class="string">+---[RSA 2048]----+</span></span><br><span class="line"><span class="string">|        . ..     |</span></span><br><span class="line"><span class="string">|       . . ..    |</span></span><br><span class="line"><span class="string">|        . . ..   |</span></span><br><span class="line"><span class="string">|       + o o ..  |</span></span><br><span class="line"><span class="string">|      E S * o +..|</span></span><br><span class="line"><span class="string">| . .   + B = o o.|</span></span><br><span class="line"><span class="string">|o o o . o = o    |</span></span><br><span class="line"><span class="string">|== =o+oo o       |</span></span><br><span class="line"><span class="string">|*+O+*=o.o        |</span></span><br><span class="line"><span class="string">+----[SHA256]-----+</span></span><br></pre></td></tr></table></figure>
+<h4 id="第2步：创建github-io仓库"><a href="#第2步：创建github-io仓库" class="headerlink" title="第2步：创建github.io仓库"></a>第2步：创建github.io仓库</h4><p>1.注册Github账号 ，地址：<a href="https://github.com" target="_blank" rel="noopener">Github</a></p>
+<p>2.使用Github Page搭建博客, 需要在github建立仓库,仓库名为username.github.io</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/Jonyker/jonyker.github.io</span><br></pre></td></tr></table></figure>
+<h4 id="第3步：配置公钥到Github"><a href="#第3步：配置公钥到Github" class="headerlink" title="第3步：配置公钥到Github"></a>第3步：配置公钥到Github</h4><p>1.打开<code>C:\Users\Administrator\.ssh\id_rsa.pub</code>文件</p>
+<p>2.打开Github网站，点击头像<code>Setting</code>选择<code>SSH and GPG Keys</code>点击【SSH keys 】右上角的<code>New SSH key</code>，复制id_rsa.pub文件的内容到Github的key输入框里面，保存即可。</p>
+<p><img src="/2018/07/17/articles/Hexo/Hexo搭建个人博客步骤/1532009122.jpg" alt=""></p>
+<p>3.检测是否配置成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>出现下面信息，则是成功了：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'github.com (52.74.223.119)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string">RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</span></span><br><span class="line"><span class="string">Are you sure you want to continue connecting (yes/no)? yes</span></span><br><span class="line"><span class="string">Warning: Permanently added '</span>github.com,52.74.223.119<span class="string">' (RSA) to the list of known hosts.</span></span><br><span class="line"><span class="string">Hi Jonyker! You'</span>ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+<p>4.配置个人信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name <span class="string">"Firstname Lastname"</span></span><br><span class="line">$ git config --global user.email <span class="string">"your_email@youremail.com"</span></span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="（二）安装配置NodeJS"><a href="#（二）安装配置NodeJS" class="headerlink" title="（二）安装配置NodeJS"></a>（二）安装配置NodeJS</h2><h3 id="2-1下载nodejs安装文件，并配置"><a href="#2-1下载nodejs安装文件，并配置" class="headerlink" title="2.1下载nodejs安装文件，并配置"></a>2.1下载nodejs安装文件，并配置</h3><p>第一步：下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node-v8.11.3-x64.msi</a></p>
+<blockquote>
+<p>注意，需要在安装的时候，添加nodejs到安装路径</p>
+</blockquote>
+<p>第二步：检测nodejs</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ node -v</span><br><span class="line">v8.9.4</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="（三）初始化Hexo，及基本操作"><a href="#（三）初始化Hexo，及基本操作" class="headerlink" title="（三）初始化Hexo，及基本操作"></a>（三）初始化Hexo，及基本操作</h2><h3 id="3-1-使用npm安装Hexo"><a href="#3-1-使用npm安装Hexo" class="headerlink" title="3.1.使用npm安装Hexo"></a>3.1.使用npm安装Hexo</h3><h4 id="第一步：安装hexo"><a href="#第一步：安装hexo" class="headerlink" title="第一步：安装hexo"></a>第一步：安装hexo</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo -g  <span class="comment">#-g表示全局安装, npm默认为当前项目安装</span></span><br><span class="line">$ hexo version		  <span class="comment"># 查看hexo版本</span></span><br></pre></td></tr></table></figure>
+<h4 id="第二步：初始化hexo目录"><a href="#第二步：初始化hexo目录" class="headerlink" title="第二步：初始化hexo目录"></a>第二步：初始化hexo目录</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/git</span><br><span class="line">$ hexo init hexo  <span class="comment">#执行init命令初始化到你指定的hexo目录</span></span><br><span class="line">$ <span class="built_in">cd</span> hexo</span><br><span class="line">$ npm install    <span class="comment">#install before start blogging</span></span><br><span class="line">$ hexo generate       <span class="comment">#自动根据当前目录下文件,生成静态网页</span></span><br><span class="line">$ hexo server         <span class="comment">#运行本地服务</span></span><br></pre></td></tr></table></figure>
+<p><strong>浏览器输入<a href="https://link.jianshu.com/?t=http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>就可以看到效果 。</strong></p>
+<p>第三步：新建xxxx.md文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"我的第一篇文章"</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>博文会自动生成在博客目录下<code>source/_posts\我的第一篇文章.md</code></strong> </p>
+<p>文件格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">title: &quot;我的第一篇文章&quot;  #博文题目</span><br><span class="line">date: 2018-07-19 11:25:38      #生成时间</span><br><span class="line">tags:                    #标签, 多个标签也可以使用格式[tag1, tag2, tag3,...]</span><br><span class="line">- tag1</span><br><span class="line">- tag2</span><br><span class="line">- tag3</span><br><span class="line">categories: [cat1,cat2,cat3]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p><br></p>
+<h2 id="（四）配置Hexo主题"><a href="#（四）配置Hexo主题" class="headerlink" title="（四）配置Hexo主题"></a>（四）配置Hexo主题</h2><p><br></p>
+<h2 id="（五）写作注意"><a href="#（五）写作注意" class="headerlink" title="（五）写作注意"></a>（五）写作注意</h2><h3 id="5-1-Hexo博客图片问题"><a href="#5-1-Hexo博客图片问题" class="headerlink" title="5.1.Hexo博客图片问题"></a>5.1.Hexo博客图片问题</h3><p>因为使用，外部连接图片，会使用到其他图床，导致自己记不清楚或者自己感觉很麻烦，下面介绍一种使用与markdown文件放在一起的方式，显示图片。</p>
+<h4 id="第一步：修改站点-config-yml-文件"><a href="#第一步：修改站点-config-yml-文件" class="headerlink" title="第一步：修改站点_config.yml 文件"></a>第一步：修改站点_config.yml 文件</h4><p>Hexo 提供了一种更方便管理 Asset 的设定：post_asset_folder，当您设置post_asset_folder为true参数后，在建立文件时，Hexo会自动建立一个与文章同名的文件夹，您可以把与该文章相关的所有资源都放到那个文件夹。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ post_asset_folder:<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h4 id="第二步：安装上传图片的插件"><a href="#第二步：安装上传图片的插件" class="headerlink" title="第二步：安装上传图片的插件"></a>第二步：安装上传图片的插件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+<p>然后使用hexo new “xxxxx”，会产生一个xxxxx.md文件和xxxxx文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">xxxxx</span><br><span class="line">├── apppicker.jpg</span><br><span class="line">├── logo.jpg</span><br><span class="line">└── rules.jpg</span><br><span class="line">xxxxx.md</span><br></pre></td></tr></table></figure>
+<p>最后在md文件中，使用:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'![logo](xxxxx/logo.jpg)'</span></span><br></pre></td></tr></table></figure></p>
+<p>生成的文件路径是：<code>&lt;img src=&quot;/2018/7/19/xxxxx/logo.jpg&quot; alt=&quot;logo&quot;&gt;</code></p>
+<p><br></p>
+<p>作者：吴开杰</p>
+<p>联系QQ：534098845</p>
+<p><br></p>
+<p><br></p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处。
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/07/18/articles/Command/命令行的基本格式/" class="pre-post btn btn-default" title='命令行的基本格式'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">命令行的基本格式</span>
+        </a>
+    
+    
+        <a href="/2016/06/17/articles/Hexo/Helle-Hexo/" class="next-post btn btn-default" title='Helle-Hexo'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">Helle-Hexo</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xEVsKKOGYzl08U4bQvi5dzLT-gzGzoHsz',
+            appKey: 'QIGaRLo2U3rG8fONCUUCmYil',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo搭建个人博客步骤"><span class="toc-text">Hexo搭建个人博客步骤~</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#（一）安装配置Git"><span class="toc-text">（一）安装配置Git</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1安装Git"><span class="toc-text">1.1安装Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2配置Git"><span class="toc-text">1.2配置Git</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第1步：创建SSH-Key"><span class="toc-text">第1步：创建SSH Key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第2步：创建github-io仓库"><span class="toc-text">第2步：创建github.io仓库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第3步：配置公钥到Github"><span class="toc-text">第3步：配置公钥到Github</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（二）安装配置NodeJS"><span class="toc-text">（二）安装配置NodeJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1下载nodejs安装文件，并配置"><span class="toc-text">2.1下载nodejs安装文件，并配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（三）初始化Hexo，及基本操作"><span class="toc-text">（三）初始化Hexo，及基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-使用npm安装Hexo"><span class="toc-text">3.1.使用npm安装Hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一步：安装hexo"><span class="toc-text">第一步：安装hexo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二步：初始化hexo目录"><span class="toc-text">第二步：初始化hexo目录</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（四）配置Hexo主题"><span class="toc-text">（四）配置Hexo主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#（五）写作注意"><span class="toc-text">（五）写作注意</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-Hexo博客图片问题"><span class="toc-text">5.1.Hexo博客图片问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#第一步：修改站点-config-yml-文件"><span class="toc-text">第一步：修改站点_config.yml 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二步：安装上传图片的插件"><span class="toc-text">第二步：安装上传图片的插件</span></a></li></ol></li></ol></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Blogger is <a href="//github.com/Jiitech" class="copyright-links" target="_blank" rel="nofollow">Jonyker </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,347 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="depth编程笔记">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://www.udevtech.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>A股手续费具体算法 | depth编程笔记</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="depth编程笔记" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+
+
+
+
+
+	<script type="text/javascript" src="http://tajs.qq.com/stats?sId=65935173" charset="UTF-8"></script>
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://o7f6a1zrm.bkt.clouddn.com/banner.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='Jonyker'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://www.udevtech.com">depth编程笔记</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>首页</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/理财/"><i class="fa "></i>理财</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/随笔/"><i class="fa "></i>随笔</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="A股手续费具体算法">
+            
+	            A股手续费具体算法
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/理财">
+            理财
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/股票" title='股票'>
+                        股票
+                    </a>
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/07/25</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="（一）股票交易费用包括三部分"><a href="#（一）股票交易费用包括三部分" class="headerlink" title="（一）股票交易费用包括三部分"></a>（一）股票交易费用包括三部分</h1><ul>
+<li><p><strong>印花税</strong></p>
+<ul>
+<li>成交金额的1‰,只有卖出时收取。 </li>
+</ul>
+</li>
+<li><p><strong>过户费(仅上海股票收取)</strong></p>
+<ul>
+<li>   每1000股收取1元，不足1000股按1元收取。</li>
+</ul>
+</li>
+<li><p><strong>券商交易佣金</strong></p>
+<ul>
+<li>最高为成交金额的3‰，最低5元起，单笔交易佣金不满5元按5元收取异地通讯费：由各券商自行决定收不收。</li>
+</ul>
+</li>
+</ul>
+<h1 id="（二）股票买进费用"><a href="#（二）股票买进费用" class="headerlink" title="（二）股票买进费用"></a>（二）股票买进费用</h1><p><strong>1、佣金0.015%-0.3%</strong></p>
+<pre><code>根据你的证券公司决定，但是佣金最低收取标准是5元。
+
+比如你买了1000元，实际佣金应该是3元，但是不到5元都按照5元收取。 
+</code></pre><p><strong>2、过户费(仅仅限于沪市)</strong></p>
+<pre><code>每一千股收取1元，就是说你买卖一千股都要交1元。
+</code></pre><h1 id="（三）股票卖出费用："><a href="#（三）股票卖出费用：" class="headerlink" title="（三）股票卖出费用："></a>（三）股票卖出费用：</h1><p><strong>1、印花税0.1%</strong> </p>
+<p><strong>2、佣金0.015%-0.3%</strong></p>
+<pre><code>根据你的证券公司决定，但是拥挤最低收取标准是5元。
+
+比如你买了1000元股票，实际佣金应该是3元，但是不到5元都按照5元收取。 
+</code></pre><p><strong>3、过户费(仅仅限于沪市)</strong></p>
+<pre><code>每一千股收取1元，就是说你买卖一千股都要交1元。
+</code></pre><p><br></p>
+<p>以上就是“股票交易手续费怎么计算?”的具体介绍。股票交易除了买卖股票的价格之外，还会收取佣金、过户费、印花税等等，所以你买入股票的成本价并不是你的成交价，是包含了佣金等手续费之后的价格，因此会有一个成本价。 </p>
+<h1 id="（四）实例："><a href="#（四）实例：" class="headerlink" title="（四）实例："></a>（四）实例：</h1><p>1、印花税：1‰(卖的时候才收取，此为国家税收，全国统一)。 </p>
+<p>2、过户费：深圳交易所无此项费用，上海交易所收费标准(每1000股收取1元，不足1000股按1元收取)。 </p>
+<p>3、交易佣金：最高收费为3‰，最低收费5元。各家劵商收费不一，开户前可咨询清楚。</p>
+<p>假设你买入10000股，每股票价格为10元，以此为例，对其买入成本计算：</p>
+<p>买入股票所用金额：10元/股×10000股=<strong>100000元;</strong></p>
+<p>过户费：0.001元×10000股=10元(沪市股票计算，深市为0); </p>
+<p>交易佣金：100000×3‰=300元(按最高标准计算，正常情况下都小于这个值); </p>
+<p>买入总成本：100000元+300元+10元=<strong>100310元</strong>(买入10000股，每股10元，所需总资金) </p>
+<p>多少每股卖出才不赔钱? </p>
+<p>可按如下公式计算：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">（买入总成本+卖出过户费）÷(1-印花税率-交易佣金率)÷股票数量</span><br><span class="line"> =</span><br><span class="line">（100310元+10元）÷(1-0.001-0.003)÷10000=10.07228916元 =10.07元(四舍五入)</span><br></pre></td></tr></table></figure>
+<p>若以10.08每股卖出价格计算：</p>
+<p>股票金额：10.08元/股×10000股=<strong>100800元;</strong> </p>
+<p>印花税：100800元×1‰=100.8元; </p>
+<p>过户费：0.001元×10000股=10元; </p>
+<p>交易佣金：100800元×3‰=302.4元; </p>
+<p>卖出后收入：100800元-100.8元-10元-302.4元=<strong>100386.8元;</strong> </p>
+<p>最终实际盈利为：卖出后收入-买入总成本=<strong>100386.8-100310</strong>=<strong>76.8元</strong></p>
+<p><br></p>
+<p>作者：吴开杰</p>
+<p>联系QQ：534098845</p>
+<p><br></p>
+<p><br></p>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处。
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/07/26/articles/理财/MACD指标/一MACD算法详细/" class="pre-post btn btn-default" title='（一）MACD算法详细'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">（一）MACD算法详细</span>
+        </a>
+    
+    
+        <a href="/2018/07/21/articles/微信小程序/微信小程序动画/" class="next-post btn btn-default" title='微信小程序动画'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">微信小程序动画</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+    
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xEVsKKOGYzl08U4bQvi5dzLT-gzGzoHsz',
+            appKey: 'QIGaRLo2U3rG8fONCUUCmYil',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: 'zh-CN'.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">文章目录</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#（一）股票交易费用包括三部分"><span class="toc-text">（一）股票交易费用包括三部分</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#（二）股票买进费用"><span class="toc-text">（二）股票买进费用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#（三）股票卖出费用："><span class="toc-text">（三）股票卖出费用：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#（四）实例："><span class="toc-text">（四）实例：</span></a></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Blogger is <a href="//github.com/Jiitech" class="copyright-links" target="_blank" rel="nofollow">Jonyker </a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>
